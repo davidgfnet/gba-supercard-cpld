@@ -1,0 +1,13 @@
+.{
+    .name = .supercard_jed,
+    .fingerprint = 0x7e9c2057df9661cc,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.14.0",
+    .paths = .{""},
+    .dependencies = .{
+        .lc4k = .{
+            .url = "git+https://github.com/bcrist/Zig-LC4k#e94c93226fe8e3c386b6d04cef4276ac37af9be9",
+            .hash = "lc4k-0.1.0-5R47QschEgDVQ8hu8cluPpUKl2bvIogzB4eA_oWLar5l",
+        },
+    },
+}
