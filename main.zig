@@ -19,6 +19,10 @@ pub fn main() !void {
     // names.add_signal_name(Chip.pins._20.fb(), "Signal_Name");  // .fb() returns the raw macrocell output/feedback signal for the macrocell corresponding to the pin (i.e. enum names starting with `mc_`; note this isn't necessarily the same as the `io_` signal even for outputs, since ORM and OE apply to the latter)
 
     // Start adding known signal names
+    try names.add_signal_name(.io_C5,  "GP-19");
+    try names.add_signal_name(.io_C4,  "GP-20");
+    try names.add_signal_name(.io_C2,  "GP-21");
+    try names.add_signal_name(.io_C0,  "GP-22");
     try names.add_signal_name(.io_D14, "GP-23");
     try names.add_signal_name(.io_D13, "SD-DAT3");     // SD DAT lines might be swap (ie. didn't really check the order)
     try names.add_signal_name(.io_D12, "SD-DAT2");
