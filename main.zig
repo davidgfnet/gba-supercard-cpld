@@ -62,6 +62,15 @@ pub fn main() !void {
     // Same for /OE signal
     try names.add_signal_name(Chip.pins._121.pad(), "FLASH-SRAM-NOE");
 
+    // Main oscillator (50MHz)
+    // Connected to the SRAM CLK input as well as CPLD (clk2)
+    try names.add_signal_name(Chip.pins._50.pad(), "CLK50MHz");    // CLK2 pin
+
+    // Bus control signals
+    try names.add_signal_name(Chip.pins._112.pad(), "GP-CS");    // CLK3 pin
+    try names.add_signal_name(Chip.pins._98.pad(), "GP-RD");
+    try names.add_signal_name(Chip.pins._114.pad(), "GP-WR");    // CLK0 pin
+
 //    try names.add_signal_name(Chip.pins._9.pad(),  "GP-0");
     try names.add_signal_name(.io_A10, "GP-1");
     try names.add_signal_name(.io_A12, "GP-2");
