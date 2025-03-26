@@ -23,11 +23,39 @@ pub fn main() !void {
     // General overview
     //
     // The SRAM chip is mostly driven by the bus using 16 wires as addr and another 8 as data.
-    // The flash chip is driven by the CPLD (lower 16 bits).
+    //   Its CS is wired to CS2 and OE/WE are driven by the CPLD.
+    // The flash chip is driven by the CPLD (lower 16 bits, its higher bits are connected to the bus)
+    //   Supports a bigger chip (at least 4MiB or so, since it wires many NC addr pins)
 
 
     // Start adding known signal names
     try names.add_signal_name(Chip.pins._23.pad(),  "SRAM-A16");
+
+    // PSRAM address wiring to CPLD
+    try names.add_signal_name(Chip.pins._60.pad(),  "DDR-A0");
+    try names.add_signal_name(Chip.pins._55.pad(),  "DDR-A1");
+    try names.add_signal_name(Chip.pins._52.pad(),  "DDR-A2");
+    try names.add_signal_name(Chip.pins._45.pad(),  "DDR-A3");
+    try names.add_signal_name(Chip.pins._47.pad(),  "DDR-A4");
+    try names.add_signal_name(Chip.pins._54.pad(),  "DDR-A5");
+    try names.add_signal_name(Chip.pins._57.pad(),  "DDR-A6");
+    try names.add_signal_name(Chip.pins._62.pad(),  "DDR-A7");
+    try names.add_signal_name(Chip.pins._64.pad(),  "DDR-A8");
+    try names.add_signal_name(Chip.pins._78.pad(),  "DDR-A9");
+    try names.add_signal_name(Chip.pins._63.pad(),  "DDR-A10");
+    try names.add_signal_name(Chip.pins._79.pad(),  "DDR-A11");
+    try names.add_signal_name(Chip.pins._82.pad(),  "DDR-A12");
+
+    try names.add_signal_name(Chip.pins._70.pad(),  "DDR-BA0");
+    try names.add_signal_name(Chip.pins._68.pad(),  "DDR-BA1");
+
+    // Output/input data signals (DQ15..0) are connected to the GP-XX bus as well (GP15-GP-0)
+
+    // /CS is always asserted, DQML & DQMH are always asserted (always write a full 16 bit word)
+    try names.add_signal_name(Chip.pins._73.pad(),  "DDR-NRAS");
+    try names.add_signal_name(Chip.pins._75.pad(),  "DDR-NCAS");
+    try names.add_signal_name(Chip.pins._77.pad(),  "DDR-NWE");
+    try names.add_signal_name(Chip.pins._71.pad(),  "DDR-CKE");      // Clock enable is actually wired? LOL
 
     // CPLD connections to FLASH (address bus + control)
     try names.add_signal_name(Chip.pins._100.pad(), "FLASH-A0");
@@ -46,7 +74,7 @@ pub fn main() !void {
     try names.add_signal_name(Chip.pins._106.pad(), "FLASH-A13");
     try names.add_signal_name(Chip.pins._89.pad(),  "FLASH-A14");
     try names.add_signal_name(Chip.pins._111.pad(), "FLASH-A15");
-    try names.add_signal_name(Chip.pins._80.pad(),  "FLASH-A16");   // This actually an input (A16 and A17 are driven by the bus directly!)
+    // Flash A16 and A17 are directly connected to the bus (GP-16 and GP-17)
 
     // Flash CE signal (independent from SRAM!)
     try names.add_signal_name(Chip.pins._118.pad(),  "FLASH-NCE");
@@ -71,27 +99,38 @@ pub fn main() !void {
     try names.add_signal_name(Chip.pins._98.pad(), "GP-RD");
     try names.add_signal_name(Chip.pins._114.pad(), "GP-WR");    // CLK0 pin
 
-//    try names.add_signal_name(Chip.pins._9.pad(),  "GP-0");
-    try names.add_signal_name(.io_A10, "GP-1");
-    try names.add_signal_name(.io_A12, "GP-2");
-    try names.add_signal_name(.io_A14, "GP-3");
-    try names.add_signal_name(.io_B0,  "GP-4");
-    try names.add_signal_name(.io_B2,  "GP-5");
-    try names.add_signal_name(.io_B4,  "GP-6");
-    try names.add_signal_name(.io_B6,  "GP-7");
-    try names.add_signal_name(.io_B8,  "GP-8");
-    try names.add_signal_name(.io_B10, "GP-9");
-    try names.add_signal_name(.io_B12, "GP-10");
+    try names.add_signal_name(Chip.pins._124.pad(), "GP-0");
+    try names.add_signal_name(Chip.pins._126.pad(), "GP-1");
+    try names.add_signal_name(Chip.pins._127.pad(), "GP-2");
+    try names.add_signal_name(Chip.pins._128.pad(), "GP-3");
+    try names.add_signal_name(Chip.pins._4.pad(),   "GP-4");
+    try names.add_signal_name(Chip.pins._6.pad(),   "GP-5");
+    try names.add_signal_name(Chip.pins._7.pad(),   "GP-6");
+    try names.add_signal_name(Chip.pins._9.pad(),   "GP-7");
+    try names.add_signal_name(Chip.pins._11.pad(),  "GP-8");
+    try names.add_signal_name(Chip.pins._13.pad(),  "GP-9");
+    try names.add_signal_name(Chip.pins._14.pad(),  "GP-10");
+    try names.add_signal_name(Chip.pins._15.pad(),  "GP-11");
+    try names.add_signal_name(Chip.pins._18.pad(),  "GP-12");
+    try names.add_signal_name(Chip.pins._20.pad(),  "GP-13");
+    try names.add_signal_name(Chip.pins._21.pad(),  "GP-14");
+    try names.add_signal_name(Chip.pins._25.pad(),  "GP-15");
+    try names.add_signal_name(Chip.pins._80.pad(),  "GP-16");
+    try names.add_signal_name(Chip.pins._93.pad(),  "GP-17");
+    try names.add_signal_name(Chip.pins._16.pad(),  "GP-18");
+    try names.add_signal_name(Chip.pins._26.pad(),  "GP-19");
+    try names.add_signal_name(Chip.pins._27.pad(),  "GP-20");
+    try names.add_signal_name(Chip.pins._28.pad(),  "GP-21");
+    try names.add_signal_name(Chip.pins._29.pad(),  "GP-22");
+    try names.add_signal_name(Chip.pins._34.pad(),  "GP-23");
 
-    try names.add_signal_name(.io_B14, "GP-18");
-    try names.add_signal_name(.io_C5,  "GP-19");
-    try names.add_signal_name(.io_C4,  "GP-20");
-    try names.add_signal_name(.io_C2,  "GP-21");
-    try names.add_signal_name(.io_C0,  "GP-22");
-    try names.add_signal_name(.io_D14, "GP-23");
-    try names.add_signal_name(.io_D13, "SD-DAT3");     // SD DAT lines might be swap (ie. didn't really check the order)
-    try names.add_signal_name(.io_D12, "SD-DAT2");
-    try names.add_signal_name(.io_D10, "SD-CLK");
+    // SD connections
+    try names.add_signal_name(Chip.pins._35.pad(), "SD-DAT3");     // SD DAT lines might be swap (ie. didn't really check the order)
+    try names.add_signal_name(Chip.pins._36.pad(), "SD-DAT2");
+    try names.add_signal_name(Chip.pins._42.pad(), "SD-DAT1");
+    try names.add_signal_name(Chip.pins._44.pad(), "SD-DAT0");
+    try names.add_signal_name(Chip.pins._37.pad(), "SD-CLK");
+    try names.add_signal_name(Chip.pins._39.pad(), "SD-CMD");
 
     var f = try std.fs.cwd().createFile("report.html", .{});
     defer f.close();
