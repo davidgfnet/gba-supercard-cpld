@@ -1,0 +1,84 @@
+(footprint "Oscillator"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "477b2feb-39ab-47cc-901e-f6886d8d0bfa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Oscillator"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bf2425cf-c06a-4927-8b56-60c0ba935012")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a83c65bd-76c6-43d7-9022-d208054c20ea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c7212bb7-0654-4517-bf2d-9faf24c68884")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(pad "1" smd rect
+		(at 0 0 270)
+		(size 1.3 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "beb75e80-67d3-4de9-9753-571a1314b225")
+	)
+	(pad "2" smd rect
+		(at 0 5.15 270)
+		(size 1.3 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b5aa0488-d474-4261-b6a3-7eb628b1d0a5")
+	)
+	(pad "3" smd rect
+		(at 4.45 5.15 270)
+		(size 1.3 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ddbe0e32-137b-47ba-b8a5-9c028d1baf4f")
+	)
+	(pad "4" smd rect
+		(at 4.45 0 270)
+		(size 1.3 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "554f4ae1-9c51-40de-b4c5-784d2deb87ef")
+	)
+	(embedded_fonts no)
+)

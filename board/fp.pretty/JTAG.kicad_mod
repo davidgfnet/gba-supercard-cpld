@@ -1,0 +1,96 @@
+(footprint "JTAG"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "d57a2514-b649-484e-849d-f209f0f851e6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "JTAG"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7c1ba4ef-1f5a-4903-905c-31d56e3d817d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ae5a9858-b6ae-44af-863c-49f132beed42")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0cda4cd6-bb58-4c62-af29-aaab52dd7122")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(pad "1" smd oval
+		(at -6.35 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3036e8ef-e179-4d48-ac02-047fa50500d0")
+	)
+	(pad "2" smd oval
+		(at -3.81 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e3a13db3-ee0f-46de-8660-e2185d63e726")
+	)
+	(pad "3" smd oval
+		(at -1.27 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "742be910-48a2-441d-b6d1-35af35aa1f93")
+	)
+	(pad "4" smd oval
+		(at 1.27 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1d17927e-27df-4bb8-a769-d340406d7a36")
+	)
+	(pad "5" smd oval
+		(at 3.81 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "85194191-f402-4d17-8bc9-72919957e453")
+	)
+	(pad "6" smd oval
+		(at 6.35 0)
+		(size 1.6 3.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e4b3da75-e64d-42f8-964b-9b1f14406ca6")
+	)
+	(embedded_fonts no)
+)

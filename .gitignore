@@ -2,3 +2,9 @@
 zig-out/
 
 .vscode/
+
+*.bak
+fp-info-cache
+*.kicad_prl
+*.jpg
+*.zip
