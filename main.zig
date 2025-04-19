@@ -166,6 +166,17 @@ pub fn main() !void {
 
     try names.add_signal_name(.mc_H12, "addr-load");       // Used to load address (instead of incrementing it)
 
+    // Some internal counter/FSM, 9 bits, used for DDR signals it seems!
+    try names.add_signal_name(.mc_A12, "icntr0");
+    try names.add_signal_name(.mc_A10, "icntr1");
+    try names.add_signal_name(.mc_G7,  "icntr2");
+    try names.add_signal_name(.mc_G5,  "icntr3");
+    try names.add_signal_name(.mc_G13, "icntr4");
+    try names.add_signal_name(.mc_G0,  "icntr5");
+    try names.add_signal_name(.mc_G15, "icntr6");
+    try names.add_signal_name(.mc_G11, "icntr7");
+    try names.add_signal_name(.mc_G9,  "icntr8");
+
     // Internal magic reg (0x1FFFFFE), has 3 bits (LSB) plus some other weird/complex bits too
     try names.add_signal_name(.mc_B12, "MAP-REG");         // 1 for SDRAM, 0 for flash
     try names.add_signal_name(.mc_B11, "SDENABLE");        // Enable SD driver via the top mem space
