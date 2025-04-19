@@ -177,6 +177,11 @@ pub fn main() !void {
     try names.add_signal_name(.mc_G11, "icntr7");
     try names.add_signal_name(.mc_G9,  "icntr8");
 
+    try names.add_signal_name(.mc_A7,  "ddrcnt0");
+    try names.add_signal_name(.mc_A3,  "ddrcnt1");
+    try names.add_signal_name(.mc_A9,  "ddrcnt2");
+    try names.add_signal_name(.mc_A11, "ddrcnt3");
+
     // Internal magic reg (0x1FFFFFE), has 3 bits (LSB) plus some other weird/complex bits too
     try names.add_signal_name(.mc_B12, "MAP-REG");         // 1 for SDRAM, 0 for flash
     try names.add_signal_name(.mc_B11, "SDENABLE");        // Enable SD driver via the top mem space
